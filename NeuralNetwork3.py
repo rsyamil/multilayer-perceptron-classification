@@ -1,6 +1,7 @@
 import csv
 import numpy as np
 import scipy.special as sp
+import sys
 
 #load all data needed
 def loadData(dir, verbose=False):
@@ -93,9 +94,15 @@ if __name__ == "__main__":
     #flags
     verbose = False
     debug = False
+    
+    #get input from command line
+    if verbose:
+        print(sys.argv[1])
+        print(sys.argv[2])
+        print(sys.argv[3])
 
     #read the data from .csv files
-    dirs = ["train_image.csv", "test_image.csv", "train_label.csv"]
+    dirs = [sys.argv[1], sys.argv[3], sys.argv[2]]
     train_image = loadData(dirs[0], verbose)
     test_image = loadData(dirs[1], verbose)
     train_label = loadData(dirs[2], verbose)
